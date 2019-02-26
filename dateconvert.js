@@ -1,5 +1,8 @@
 /*  New Lunisolar Calendar Date Conversion
     (c) Ryan McGowan, 2019
+    
+    A script providing a function to convert Gregorian dates to a novel calendrical system.
+    See https://internally-combusted.net/ for more info.
 */
 
 // A simple object for storing lunisolar date information, with a toString method for pretty printing.
