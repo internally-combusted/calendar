@@ -2,6 +2,15 @@
 //  DateTextField.m
 //  Calendar
 //
+//  Part of an old Cocoa application for converting Gregorian dates to a novel calendrical system.
+//  This uses a very simple iterative solution; it's relatively concise, but requires
+//  looping through every day between the epoch and the target date for every single conversion.
+//  Because the epoch is in AD 33, that's over 700k iterations to convert any recent date.
+//  It's not earth-shattering for a simple calendar app, but it's pretty inefficient. 
+//
+//  On the plus side, the iterative solution is much easier to check for correctness than
+//  the calculation-based approach in the Javascript version (also in this repository).
+//
 //  (c) 2019 Ryan McGowan
 //
 
@@ -19,15 +28,15 @@
 	NSInteger Y1 = [components year] + 4800;
 	NSInteger JD = 1461*(Y1+M1)/4 + 367*([components month]-2-12*M1)/12 - (3*((Y1+M1+100)/100))/4 + [components day] - 32075 - 1;
 	NSLog([NSString stringWithFormat:@"%d",JD]);
-	// Calculate Aovren day number.
 	
-	NSInteger AovrenDate = JD - 1733176;
-	if (AovrenDate >= 0)
+	// Calculate new day number.
+	NSInteger NewDate = JD - 1733176;
+	if (NewDate >= 0)
 	{
-		AovrenDate = AovrenDate + 1;
+		NewDate = NewDate + 1;
 	}
 	
-	if (AovrenDate > 0)
+	if (NewDate > 0)
 	{
 		NSInteger Era = 1;
 		NSInteger Day = 0;
@@ -45,7 +54,7 @@
 		
 		NSInteger i;
 		
-		for(i = 1; i <= AovrenDate; i = i + 1)
+		for(i = 1; i <= NewDate; i = i + 1)
 		{
 			Day = Day + 1; // Increment day.
 			
@@ -167,7 +176,7 @@
 			MonthString = @"saeculi";		
 		
 		
-		[avMonthType setStringValue:((Centurial) ? @"centurial" : ((Full) ? @"full" : @"hollow"))];
+		[avMonthType setStringValue:((Centurial) ? @"centennial" : ((Full) ? @"full" : @"hollow"))];
 		[avYearType setStringValue:((Leap) ? @"leap" : @"common" )];
 		[self setStringValue:[NSString stringWithFormat:@"%d %@ %d (Era %d)", Day, MonthString, Year, Era]];
 	}
