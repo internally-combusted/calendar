@@ -14,7 +14,8 @@ Thanks for visiting, and enjoy your day!
 
  ## Contents
 
- - [`renderer`](https://github.com/internally-combusted/portfolio/tree/master/renderer) — Pieces from a Vulkan-ish graphics renderer using Rust and [`gfx-hal`]. It just makes rectangles at the moment.
+This repo just has a few isolated samples. For a complete project, see my [`render-matic` repo](https://github.com/internally-combusted/render-matic).
+
  - [`DateTextField.m`](https://github.com/internally-combusted/portfolio/blob/master/DateTextField.m) — Part of an old Cocoa app for converting normal calendar dates to dates in a new calendar system. Written in Objective-C.
  - [`dateconvert.js`](https://github.com/internally-combusted/portfolio/blob/master/dateconvert.js) — A new, web-enabled way of converting dates to a new calendar system with the power of JavaScript.
  - [`logging.rkt`](https://github.com/internally-combusted/portfolio/blob/master/logging.rkt) — A Racket macro expanding Racket's built-in logging system. It allows you to quickly define sets of functions for logging about specific topics, using multiple importance levels (warn, debug, etc.)
